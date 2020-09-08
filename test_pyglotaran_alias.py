@@ -40,7 +40,8 @@ def test_import_works():
 
     glotaran_modules = tuple(
         filter(
-            lambda name: name == "glotaran" or name.startswith("glotaran."), loaded_module_names,
+            lambda name: name == "glotaran" or name.startswith("glotaran."),
+            loaded_module_names,
         )
     )
 
