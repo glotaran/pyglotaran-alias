@@ -4,12 +4,6 @@ import sys
 import pytest
 
 
-def test_no_initial_pyglotaran():
-    """Without 'import pyglotaran_alias' pyglotaran can't be imported."""
-    with pytest.raises(ImportError):
-        import pyglotaran  # noqa:  F401
-
-
 def test_exception_if_glotaran_is_missing(monkeypatch):
     """Raise Exception if glotaran isn't installed."""
 
@@ -18,20 +12,36 @@ def test_exception_if_glotaran_is_missing(monkeypatch):
 
     monkeypatch.setattr(importlib.util, "find_spec", mock_find_spec)
     with pytest.raises(ImportError, match=r"you need to install pyglotaran"):
-        import pyglotaran_alias  # noqa:  F401
+        import pyglotaran  # noqa:  F401
 
 
 def test_glotaran_import_not_leeking_out():
     """Glotaran isn't imported normally and thus not in globals."""
-    import pyglotaran_alias  # noqa:  F401
+    import pyglotaran  # noqa:  F401
 
     assert "glotaran" not in globals().keys()
 
 
+@pytest.mark.parametrize(
+    "pyglotaran_alias_local_variable",
+    [
+        "find_spec",
+        "fullname",
+        "glotaran_module",
+        "modules_to_update",
+    ],
+)
+def test_pyglotaran_alias_local_variables_leeking_out(pyglotaran_alias_local_variable):
+    assert pyglotaran_alias_local_variable not in locals().keys()
+    assert pyglotaran_alias_local_variable not in globals().keys()
+    with pytest.raises(ImportError):
+        exec(f"from pyglotaran import {pyglotaran_alias_local_variable}")
+
+
 def test_import_works():
     """Check that 'import pyglotaran' works and 'pyglotaran' is an actual alias to 'glotaran'."""
-    import pyglotaran_alias  # noqa: F401 isort:skip
     import glotaran  # noqa:  F401
+
     import pyglotaran  # noqa:  F401
 
     assert glotaran.__version__ == pyglotaran.__version__
@@ -56,3 +66,11 @@ def test_import_works():
         assert f"py{glotaran_module}" in pyglotaran_modules
 
     assert glotaran.read_model_from_yml.__code__ == pyglotaran.read_model_from_yml.__code__
+
+
+def test_from_import_works():
+    import glotaran  # noqa:  F401
+
+    from pyglotaran import read_model_from_yml
+
+    assert glotaran.read_model_from_yml.__code__ == read_model_from_yml.__code__

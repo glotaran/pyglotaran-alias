@@ -8,7 +8,7 @@ at times one might be tempted to use `import pyglotaran` instead of `import glot
 ## Usage
 
 ```python
-import pyglotaran_alias
 import pyglotaran
+from pyglotaran import
 
 ```
