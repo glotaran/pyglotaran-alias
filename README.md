@@ -32,9 +32,9 @@ When you use `import pyglotaran` the following happens:
 
 ## Known problems
 
-### Linter shows error "No name '`<module or attribute name>`' in module '`pyglotaran`'"
+### Linter shows error "No name '`<module or attribute name>`' in module '`pyglotaran`'", when using a text editor
 
-Since most linters use a static file analysis, they won't understand the live swapping of modules and think that `pyglotaran` is defined in[`pyglotaran-alias`](https://github.com/s-weigand/pyglotaran-alias/blob/master/pyglotaran/__init__.py), where `<module or attribute name>` most likely doesn't exist.
+Since most linters use a static file analysis, they won't understand the live swapping of modules at runtime and think that `pyglotaran` is defined in[`pyglotaran-alias`](https://github.com/s-weigand/pyglotaran-alias/blob/master/pyglotaran/__init__.py), where `<module or attribute name>` most likely doesn't exist.
 Thus you have a `Schrödinger-Linter`, which is right and wrong at the same time.
 
 ### Autocomplete doesn't work, when using a text editor
