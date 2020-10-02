@@ -2,8 +2,6 @@
 import sys
 from importlib.util import find_spec
 
-__version__ = "0.0.1"
-
 if find_spec("glotaran") and "pyglotaran" not in globals().keys():
     __import__("glotaran")
 

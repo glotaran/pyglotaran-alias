@@ -44,6 +44,8 @@ def test_import_works():
 
     import pyglotaran  # noqa:  F401
 
+    assert hasattr(pyglotaran, "__version__")
+
     assert glotaran.__version__ == pyglotaran.__version__
 
     loaded_module_names = sys.modules.keys()
