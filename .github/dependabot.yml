@@ -4,4 +4,27 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: weekly
+      day: friday
+      time: "18:00"
+      timezone: Europe/Amsterdam
+    reviewers:
+      - s-weigand
+      - jsnel
+    assignees:
+      - s-weigand
+      - jsnel
+
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: friday
+      time: "18:00"
+      timezone: Europe/Amsterdam
+    reviewers:
+      - s-weigand
+      - jsnel
+    assignees:
+      - s-weigand
+      - jsnel
