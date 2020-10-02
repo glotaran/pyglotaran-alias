@@ -22,7 +22,7 @@ repos:
       - id: black
         language_version: python3
   - repo: https://github.com/PyCQA/isort
-    rev: 5.5.1
+    rev: 5.5.4
     hooks:
       - id: isort
   - repo: https://gitlab.com/pycqa/flake8
@@ -34,5 +34,5 @@ repos:
     rev: v1.17.1
     hooks:
       - id: codespell
-        files: ".py|.rst"
+        files: ".py|.rst|.md"
         args: [-L doas]
