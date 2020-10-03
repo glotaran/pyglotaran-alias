@@ -41,7 +41,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
-    needs: [test] # docs
+    needs: [test]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 3.7
@@ -56,9 +56,8 @@ jobs:
       - name: Build dist
         run: |
           python setup.py sdist bdist_wheel
-      # TODO: needs new token
-      # - name: Publish package
-      #   uses: pypa/gh-action-pypi-publish@master
-      #   with:
-      #     user: __token__
-      #     password: ${{ secrets.pypi_pyglotaran_token }}
+      - name: Publish package
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          user: __token__
+          password: ${{ secrets.pypi_pyglotaran_alias_token }}
