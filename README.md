@@ -27,7 +27,7 @@ When you use `import pyglotaran` the following happens:
 - `pyglotaran-alias`'s [`__init__.py`](https://github.com/glotaran/pyglotaran-alias/blob/master/pyglotaran/__init__.py) is called.
 - The module cache (`sys.modules`) is populated with all `glotaran` modules.
 - For each `glotaran` module an additional corresponding entry with `pyglotaran` is added to the module cache.
-- The local variables used modify the module cache are deleted, so they won't pollute your globals.
+- The local variables used to modify the module cache are deleted, so they won't pollute your globals.
 - The `pyglotaran` global variable replaces [itself](https://github.com/glotaran/pyglotaran-alias/blob/master/pyglotaran/__init__.py) with the `glotaran` package.
 
 ## Known problems
