@@ -34,9 +34,12 @@ jobs:
           python -m pip install -r requirements_dev.txt
       - name: Show installed packages
         run: pip freeze
-      - name: Run tests
-        run: |
-          pytest
+      - name: Run unit tests
+        run: pytest tests/test_pyglotaran_alias.py
+      - name: Uninstall pyglotaran
+        run: pip uninstall pyglotaran -y
+      - name: Test cli exception
+        run: pytest tests/test_cli_exception.py
 
   deploy:
     runs-on: ubuntu-latest
