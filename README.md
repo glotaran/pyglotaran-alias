@@ -1,5 +1,9 @@
 # pyglotaran-alias
 
+[![PyPi Version](https://img.shields.io/pypi/v/pyglotaran_alias.svg)](https://pypi.org/project/pyglotaran-alias/)
+[![Conda Version](https://img.shields.io/conda/vn/conda-forge/pyglotaran-alias.svg)](https://anaconda.org/conda-forge/pyglotaran-alias)
+[![Supported Python Versions](https://img.shields.io/pypi/pyversions/pyglotaran_alias.svg)](https://pypi.org/project/pyglotaran-alias/)
+
 Convenience module which allows to use `pyglotaran` as an alias in the CLI and imports, when working with [pyglotaran](https://github.com/glotaran/pyglotaran).
 
 Since the python implementation of glotaran was renamed to pyglotaran to prevent ambiguity, about which glotaran was used,
