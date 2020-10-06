@@ -8,3 +8,4 @@ def test_cli_raises_proper_exeption():
         "pyglotaran", shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE
     )
     assert re.search(b"'pip install pyglotaran'", output.stderr) is not None
+    assert output.stdout == b""

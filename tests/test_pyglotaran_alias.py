@@ -1,4 +1,6 @@
 import importlib.util
+import re
+import subprocess
 import sys
 
 import pytest
@@ -32,6 +34,7 @@ def test_glotaran_import_not_leeking_out():
     ],
 )
 def test_pyglotaran_alias_local_variables_leeking_out(pyglotaran_alias_local_variable):
+    """Test that local variables are removed."""
     assert pyglotaran_alias_local_variable not in locals().keys()
     assert pyglotaran_alias_local_variable not in globals().keys()
     with pytest.raises(ImportError):
@@ -71,8 +74,20 @@ def test_import_works():
 
 
 def test_from_import_works():
+    """Test that from imports work."""
     import glotaran  # noqa:  F401
 
     from pyglotaran import read_model_from_yml
 
     assert glotaran.read_model_from_yml.__code__ == read_model_from_yml.__code__
+
+
+def test_cli_raises_proper_exeption():
+    """Test that the cli alias works properly."""
+    output = subprocess.run(
+        "pyglotaran", shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE
+    )
+    assert (
+        re.search(br"Usage\: pyglotaran \[OPTIONS\] COMMAND \[ARGS\]", output.stdout) is not None
+    )
+    assert output.stderr == b""
