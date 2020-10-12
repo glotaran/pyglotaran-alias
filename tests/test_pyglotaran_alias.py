@@ -43,13 +43,14 @@ def test_pyglotaran_alias_local_variables_leeking_out(pyglotaran_alias_local_var
 
 def test_import_works():
     """Check that 'import pyglotaran' works and 'pyglotaran' is an actual alias to 'glotaran'."""
+    # pylint: disable=no-member
     import glotaran  # noqa:  F401
 
     import pyglotaran  # noqa:  F401
 
     assert hasattr(pyglotaran, "__version__")
 
-    assert glotaran.__version__ == pyglotaran.__version__
+    assert glotaran.__version__ == pyglotaran.__version__  # type:ignore
 
     loaded_module_names = sys.modules.keys()
 
@@ -70,14 +71,18 @@ def test_import_works():
     for glotaran_module in glotaran_modules:
         assert f"py{glotaran_module}" in pyglotaran_modules
 
-    assert glotaran.read_model_from_yml.__code__ == pyglotaran.read_model_from_yml.__code__
+    assert (
+        glotaran.read_model_from_yml.__code__
+        == pyglotaran.read_model_from_yml.__code__  # type:ignore
+    )
 
 
 def test_from_import_works():
     """Test that from imports work."""
+    # pylint: disable=no-name-in-module
     import glotaran  # noqa:  F401
 
-    from pyglotaran import read_model_from_yml
+    from pyglotaran import read_model_from_yml  # type:ignore
 
     assert glotaran.read_model_from_yml.__code__ == read_model_from_yml.__code__
 
