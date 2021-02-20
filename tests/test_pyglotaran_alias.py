@@ -4,9 +4,10 @@ import subprocess
 import sys
 
 import pytest
+from _pytest.monkeypatch import MonkeyPatch
 
 
-def test_exception_if_glotaran_is_missing(monkeypatch):
+def test_exception_if_glotaran_is_missing(monkeypatch: MonkeyPatch):
     """Raise Exception if glotaran isn't installed."""
 
     def mock_find_spec(*args, **kwargs):
@@ -33,7 +34,7 @@ def test_glotaran_import_not_leeking_out():
         "modules_to_update",
     ],
 )
-def test_pyglotaran_alias_local_variables_leeking_out(pyglotaran_alias_local_variable):
+def test_pyglotaran_alias_local_variables_leeking_out(pyglotaran_alias_local_variable: str):
     """Test that local variables are removed."""
     assert pyglotaran_alias_local_variable not in locals().keys()
     assert pyglotaran_alias_local_variable not in globals().keys()
