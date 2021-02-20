@@ -1,4 +1,3 @@
-import importlib.util
 import re
 import subprocess
 import sys
@@ -10,10 +9,8 @@ from _pytest.monkeypatch import MonkeyPatch
 def test_exception_if_glotaran_is_missing(monkeypatch: MonkeyPatch):
     """Raise Exception if glotaran isn't installed."""
 
-    def mock_find_spec(*args, **kwargs):
-        pass
+    monkeypatch.setitem(sys.modules, "glotaran", None)
 
-    monkeypatch.setattr(importlib.util, "find_spec", mock_find_spec)
     with pytest.raises(ImportError, match=r"you need to install pyglotaran"):
         import pyglotaran  # noqa:  F401
 
