@@ -69,10 +69,7 @@ def test_import_works():
     for glotaran_module in glotaran_modules:
         assert f"py{glotaran_module}" in pyglotaran_modules
 
-    assert (
-        glotaran.read_model_from_yml.__code__
-        == pyglotaran.read_model_from_yml.__code__  # type:ignore
-    )
+    assert glotaran.model.model.__code__ == pyglotaran.model.model.__code__  # type:ignore
 
 
 def test_from_import_works():
@@ -80,9 +77,9 @@ def test_from_import_works():
     # pylint: disable=no-name-in-module
     import glotaran  # noqa:  F401
 
-    from pyglotaran import read_model_from_yml  # type:ignore
+    from pyglotaran.model import model  # type:ignore
 
-    assert glotaran.read_model_from_yml.__code__ == read_model_from_yml.__code__
+    assert glotaran.model.model.__code__ == model.__code__
 
 
 def test_cli_raises_proper_exeption():
