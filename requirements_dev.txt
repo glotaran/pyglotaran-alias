@@ -3,7 +3,7 @@ pip>=18.0
 wheel>=0.30.0
 
 # glotaran setup dependencies
-pyglotaran==0.1.0
+pyglotaran==0.3.0
 
 
 # testing dependencies
@@ -12,4 +12,4 @@ pytest>=3.7.1
 pluggy>=0.7
 
 # code quality asurence
-pre-commit>=2.6.0
+pre-commit>=2.10.0
