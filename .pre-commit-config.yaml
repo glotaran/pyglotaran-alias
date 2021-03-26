@@ -17,7 +17,7 @@ repos:
         args: ["--max-py-version", "3.8"]
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.10.1
+    rev: v2.11.0
     hooks:
       - id: pyupgrade
         args: [--py36-plus]
@@ -27,7 +27,7 @@ repos:
       - id: black
         language_version: python3
   - repo: https://github.com/PyCQA/isort
-    rev: 5.7.0
+    rev: 5.8.0
     hooks:
       - id: isort
   - repo: https://gitlab.com/pycqa/flake8
