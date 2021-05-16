@@ -20,7 +20,7 @@ repos:
     rev: v2.15.0
     hooks:
       - id: pyupgrade
-        args: [--py36-plus]
+        args: [--py38-plus]
   - repo: https://github.com/python/black
     rev: 21.5b1
     hooks:

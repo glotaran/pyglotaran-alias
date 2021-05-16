@@ -84,9 +84,7 @@ def test_from_import_works():
 
 def test_cli_raises_proper_exeption():
     """Test that the cli alias works properly."""
-    output = subprocess.run(
-        "pyglotaran", shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE
-    )
+    output = subprocess.run("pyglotaran", shell=True, capture_output=True)
     assert (
         re.search(br"Usage\: pyglotaran \[OPTIONS\] COMMAND \[ARGS\]", output.stdout) is not None
     )
