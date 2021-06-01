@@ -17,12 +17,12 @@ repos:
         args: ["--max-py-version", "3.9"]
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.18.1
+    rev: v2.19.0
     hooks:
       - id: pyupgrade
         args: [--py38-plus]
-  - repo: https://github.com/python/black
-    rev: 21.5b1
+  - repo: https://github.com/psf/black
+    rev: 21.5b2
     hooks:
       - id: black
         language_version: python3
@@ -30,7 +30,7 @@ repos:
     rev: 5.8.0
     hooks:
       - id: isort
-  - repo: https://gitlab.com/pycqa/flake8
+  - repo: https://github.com/PyCQA/flake8
     rev: 3.9.2
     hooks:
       - id: flake8
