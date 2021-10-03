@@ -3,7 +3,7 @@ pip>=18.0
 wheel>=0.30.0
 
 # glotaran setup dependencies
-pyglotaran==0.4.0
+pyglotaran==0.4.1
 
 
 # testing dependencies
