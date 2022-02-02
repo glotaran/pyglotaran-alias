@@ -86,6 +86,6 @@ def test_cli_raises_proper_exeption():
     """Test that the cli alias works properly."""
     output = subprocess.run("pyglotaran", shell=True, capture_output=True)
     assert (
-        re.search(br"Usage\: pyglotaran \[OPTIONS\] COMMAND \[ARGS\]", output.stdout) is not None
+        re.search(rb"Usage\: pyglotaran \[OPTIONS\] COMMAND \[ARGS\]", output.stdout) is not None
     )
     assert output.stderr == b""
