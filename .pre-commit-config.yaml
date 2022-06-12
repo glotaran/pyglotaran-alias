@@ -17,7 +17,7 @@ repos:
         args: ["--max-py-version", "3.9"]
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.32.1
+    rev: v2.33.0
     hooks:
       - id: pyupgrade
         args: [--py38-plus]
