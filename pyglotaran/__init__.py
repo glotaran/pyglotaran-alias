@@ -1,4 +1,5 @@
 """Enables 'import pyglotaran' as well as the default 'import glotaran'."""
+
 import sys
 from importlib.util import find_spec
 
