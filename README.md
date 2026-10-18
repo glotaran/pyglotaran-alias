@@ -18,7 +18,7 @@ import pyglotaran
 Or
 
 ```python
-from pyglotaran import ParameterGroup
+from pyglotaran.parameter import Parameters
 ```
 
 For autocompletion to work in an interactive session (i.e. `python repl`, `jupyter-console` or `jupyter-notebooks`) you need to first import the `pyglotaran-alias` i.e. with `import pyglotaran`.

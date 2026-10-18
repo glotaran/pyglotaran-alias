@@ -1,5 +1,21 @@
 version: 2
 updates:
+  - package-ecosystem: uv
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: friday
+      time: "18:00"
+      timezone: Europe/Amsterdam
+    rebase-strategy: "disabled"
+    assignees:
+      - jsnel
+      - s-weigand
+    groups:
+      Python:
+        update-types:
+          - minor
+          - patch
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -8,23 +24,12 @@ updates:
       day: friday
       time: "18:00"
       timezone: Europe/Amsterdam
-    reviewers:
-      - s-weigand
-      - jsnel
     assignees:
-      - s-weigand
       - jsnel
-
-  - package-ecosystem: pip
-    directory: "/"
-    schedule:
-      interval: weekly
-      day: friday
-      time: "18:00"
-      timezone: Europe/Amsterdam
-    reviewers:
       - s-weigand
-      - jsnel
-    assignees:
-      - s-weigand
-      - jsnel
+    groups:
+      GH-Actions:
+        update-types:
+          - minor
+          - patch
+    rebase-strategy: "disabled"

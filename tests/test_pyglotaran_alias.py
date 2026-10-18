@@ -69,23 +69,23 @@ def test_import_works():
     for glotaran_module in glotaran_modules:
         assert f"py{glotaran_module}" in pyglotaran_modules
 
-    assert glotaran.model.model.__code__ == pyglotaran.model.model.__code__  # type:ignore
+    assert glotaran.model.Model is pyglotaran.model.Model  # type:ignore
 
 
 def test_from_import_works():
     """Test that from imports work."""
     # pylint: disable=no-name-in-module
     import glotaran  # noqa:  F401
+    from pyglotaran.model import Model  # type:ignore
 
-    from pyglotaran.model import model  # type:ignore
-
-    assert glotaran.model.model.__code__ == model.__code__
+    assert glotaran.model.Model is Model
 
 
 def test_cli_raises_proper_exeption():
     """Test that the cli alias works properly."""
-    output = subprocess.run("pyglotaran", shell=True, capture_output=True)
+    output = subprocess.run("pyglotaran --help", shell=True, capture_output=True)
     assert (
         re.search(rb"Usage\: pyglotaran \[OPTIONS\] COMMAND \[ARGS\]", output.stdout) is not None
     )
-    assert output.stderr == b""
+    # pyglotaran 0.7 prints a deprecation notice for the CLI to stderr
+    assert b"Traceback" not in output.stderr
